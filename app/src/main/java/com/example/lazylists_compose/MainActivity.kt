@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -19,6 +20,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.lazylists_compose.ui.theme.LazyListsComposeTheme
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,7 +59,10 @@ fun MyComponent(message: MyMessage) {
     Row(Modifier
         .padding(10.dp)
         .background(MaterialTheme.colors.secondary)
-        .padding(10.dp)) {
+        .padding(10.dp)
+        .clickable(
+            onClick = { /* Ignoring onClick */ }),
+        ) {
         Image(
             painter = painterResource(id = R.drawable.ic_launcher_foreground),
             contentDescription = "",
@@ -72,6 +78,7 @@ fun MyComponent(message: MyMessage) {
             Text(text = message.title)
             Spacer(Modifier.height(8.dp))
             Text(text = message.body)
+            Text(text= message.fecha.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
         }
 
     }
@@ -79,31 +86,43 @@ fun MyComponent(message: MyMessage) {
 }
 
 
-data class MyMessage(val title: String, val body: String)
+data class MyMessage(val title: String, val body: String, val fecha: LocalDateTime)
 
 val messages: List<MyMessage> = listOf(
     MyMessage(title = "Título 1",
-        body = "You can think of Modifiers as implementations of the decorator pattern"),
+        body = "You can think of Modifiers as implementations of the decorator pattern",
+        fecha = LocalDateTime.now()),
     MyMessage(title = "Título 2",
-        body = "You can think of Modifiers as implementations of the decorator pattern"),
+        body = "You can think of Modifiers as implementations of the decorator pattern",
+        fecha = LocalDateTime.now()),
     MyMessage(title = "Título 3",
-        body = "You can think of Modifiers as implementations of the decorator pattern"),
+        body = "You can think of Modifiers as implementations of the decorator pattern",
+        fecha = LocalDateTime.now()),
     MyMessage(title = "Título 4",
-        body = "You can think of Modifiers as implementations of the decorator pattern"),
+        body = "You can think of Modifiers as implementations of the decorator pattern",
+        fecha = LocalDateTime.now()),
     MyMessage(title = "Título 5",
-        body = "You can think of Modifiers as implementations of the decorator pattern"),
+        body = "You can think of Modifiers as implementations of the decorator pattern",
+        fecha = LocalDateTime.now()),
     MyMessage(title = "Título 6",
-        body = "You can think of Modifiers as implementations of the decorator pattern"),
+        body = "You can think of Modifiers as implementations of the decorator pattern",
+        fecha = LocalDateTime.now()),
     MyMessage(title = "Título 7",
-        body = "You can think of Modifiers as implementations of the decorator pattern"),
+        body = "You can think of Modifiers as implementations of the decorator pattern",
+        fecha = LocalDateTime.now()),
     MyMessage(title = "Título 8",
-        body = "You can think of Modifiers as implementations of the decorator pattern"),
+        body = "You can think of Modifiers as implementations of the decorator pattern",
+        fecha = LocalDateTime.now()),
     MyMessage(title = "Título 9",
-        body = "You can think of Modifiers as implementations of the decorator pattern"),
+        body = "You can think of Modifiers as implementations of the decorator pattern",
+        fecha = LocalDateTime.now()),
     MyMessage(title = "Título 10",
-        body = "You can think of Modifiers as implementations of the decorator pattern"),
+        body = "You can think of Modifiers as implementations of the decorator pattern",
+        fecha = LocalDateTime.now()),
     MyMessage(title = "Título 11",
-        body = "You can think of Modifiers as implementations of the decorator pattern"),
+        body = "You can think of Modifiers as implementations of the decorator pattern",
+        fecha = LocalDateTime.now()),
     MyMessage(title = "Título 12",
-        body = "You can think of Modifiers as implementations of the decorator pattern"),
+        body = "You can think of Modifiers as implementations of the decorator pattern",
+        fecha = LocalDateTime.now()),
 )
